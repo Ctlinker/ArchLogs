@@ -262,6 +262,8 @@ Installed through **Proto**:
 
 ## 0.1.0 | Stable - Fonts Support
 
+Most/All Fonts Availables on Arch
+
 > **Commands:**
 >
 > ```fish
@@ -296,4 +298,106 @@ Installed through **Proto**:
 >         opendesktop-fonts \
 >         terminus-font \
 >         xorg-fonts-type1
+> ```
+
+## 0.2.0 | Stable - Yay Setup
+
+Yay Aur Pkg Manager Set up
+
+> **Commands:**
+>
+> Installation Process
+>
+> ```fish
+> sudo pacman -S --needed git base-devel
+> git clone https://aur.archlinux.org/yay-bin.git
+> cd yay-bin
+> makepkg -si
+> ```
+>
+> Sync with db
+>
+> ```fish
+> yay -Y --gendb
+> yay -Syu --devel
+> yay -Y --devel --save
+> ```
+
+## 0.3.0 | Stable - Snapper Setup
+
+> **Commands:**
+>
+> Installation Process
+>
+> ```fish
+> sudo pacman -S snapper
+> ```
+>
+> **Notes:**
+>
+> - `snapper` → create, compare, revert between btrfs snapshots
+>
+> Snapshots setup
+>
+> **Note: since i've already had a .snapshot folder had to rm it**
+>
+> Fix Command
+>
+> ```fish
+> sudo unmount /.snapshots
+> sudo rm -rf /.snapshots
+> ```
+>
+> Normal command
+>
+> ```fish
+> sudo snapper -c root create-config /
+> ```
+>
+> Rest of fix
+>
+> ```fish
+> sudo rm -rf /.snapshots
+> sudo mount -o subvol=@snapshots /dev/nvme0n1p4 /.snapshots --mkdir
+> ```
+
+## 0.3.1 | Stable - Fixed Locale error with `"C"` (missing UTF-8)
+
+Fixed minor error with system fonts
+
+> **Commands:**
+>
+> ```fish
+> sudo localedef -i en_US -f UTF-8 en_US.UTF-8
+>
+> set -U LANG en_US.UTF-8
+> set -U LC_ALL en_US.UTF-8
+> ```
+
+## 0.4.0 | Stable - Quickshell Barbone support
+
+> **Commands:**
+>
+> Installation Process
+>
+> ```fish
+> yay -S quickshell
+> sudo pacman -S qt6-tools
+> ```
+
+## 0.5.0 | Stable - Installed Android Studio
+
+Basic Android studio setup
+
+> **Commands:**
+>
+> ```fish
+> # Download the Android SDK.tar & Extract it
+>
+> cd android-studio &&
+> chmod +x ./bin/studio.sh
+> 
+> set -U EDITOR nvim
+> set -U ANDROID_HOME /home/cat/Android/Sdk/ #check the path match
+> ./bin/studio.sh
 > ```
