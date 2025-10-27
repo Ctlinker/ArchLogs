@@ -259,3 +259,41 @@ Installed through **Proto**:
 > - `unrar` → extract `.rar` archives
 > - `btop` → resource monitor with CPU, memory, disk, network visualizations
 > - `htop` → interactive process viewer for the terminal
+
+## 0.1.0 | Stable - Fonts Support
+
+> **Commands:**
+>
+> ```fish
+>  sudo pacman -S  nerd-fonts \
+>         adobe-source-code-pro-fonts \
+>         adobe-source-sans-fonts \
+>         adobe-source-serif-fonts \
+>         cantarell-fonts \
+>         terminus-font \
+>         ttf-bitstream-vera \
+>         ttf-dejavu \
+>         ttf-droid \
+>         ttf-fira-code \
+>         ttf-fira-mono \
+>         ttf-fira-sans \
+>         ttf-font-awesome \
+>         ttf-inconsolata \
+>         ttf-liberation \
+>         ttf-linux-libertine \
+>         ttf-roboto \
+>         ttf-ubuntu-font-family \
+>         ttf-hack \
+>         ttf-jetbrains-mono \
+>         ttf-anonymous-pro \
+>         ttf-carlito \
+>         ttf-caladea \
+>         ttf-freefont \
+>         ttf-ibm-plex \
+>         ttf-iosevka-nerd \
+>         ttf-nerd-fonts-symbols \
+>         gnu-free-fonts \
+>         opendesktop-fonts \
+>         terminus-font \
+>         xorg-fonts-type1
+> ```
