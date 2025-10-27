@@ -385,6 +385,8 @@ Fixed minor error with system fonts
 > sudo pacman -S qt6-tools
 > ```
 
+---
+
 ## 0.5.0 | Stable - Installed Android Studio
 
 Basic Android studio setup
@@ -397,7 +399,19 @@ Basic Android studio setup
 > cd android-studio &&
 > chmod +x ./bin/studio.sh
 > 
-> set -U EDITOR nvim
-> set -U ANDROID_HOME /home/cat/Android/Sdk/ #check the path match
+> set -Ux ANDROID_HOME /home/cat/Android/Sdk/ #check the path match
 > ./bin/studio.sh
+> ```
+
+---
+
+## 0.5.1 | Stable - Fix Missued Universal vars
+
+> **Commands:**
+>
+> ```fish
+> set -Ux PAGER less
+> set -Ux EDITOR nvim
+> set -Ux LANG en_US.UTF-8
+> set -Ux LC_ALL en_US.UTF-8
 > ```
