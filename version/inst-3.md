@@ -2,7 +2,30 @@
 
 ## Convention
 
-**verionning**: X.X.X (major, minor, patch or fix) | BookMark - Desc
+**verionning**: X.X.X (major, minor, patch or fix) | BookMark -> Case[scope]: Desc
+**scopes**:
+
+- @apps
+- @shell
+- @kernel
+- @boot
+- @misc
+- @graphic
+- @gaming
+
+**cases**:
+
+- Feat : adding something
+- Fix : fixing somthing
+- ReImpl: refactoring somthing
+- Patch: adding to a feature
+- Revert: rollaback to older version
+
+**bookmarks**:
+
+- Experimental
+- Stable
+- Unstable
 
 ## 0.0.0 | Stable - Core Arch DX
 
@@ -12,17 +35,17 @@ Post Installed & Configured Arch Linux, Barbone Desktop Experience
 
 ### **Setup – Drive Repartition**
 
-| Drive     | Label   | Size  | Mount-point | Subvol     | Filesystem | Purpose         |
-| --------- | ------- | ----- | ----------- | ---------  | ---------- | --------------- |
-| nvme0n1p1 |         | 2Gb   | /boot       |            | vfat       | boot partition  |
-| nvme0n1p2 |         | 5Gb   | /.recover   | @recovery  | btrfs      | recovery system |
-| nvme0n1p3 |         | 10Gb  | swap        |            | swap       | swap partition  |
-| nvme0n1p4 | Root    | 70Gb  | /           | @          | btrfs      | root volume     |
-| nvme0n1p4 | Root    |       | /var/log    | @log       | btrfs      | log sub volume  |
-| nvme0n1p4 | Root    |       | /var/lib/pacman/pkg    | @pkg       | btrfs  | pkg vol  |
-| nvme0n1p4 | Root    |       | /.snapshots | @snapshots | btrfs      | root volume     |
-| nvme0n1p5 | Home    | 100Gb | /home       | @home      | btrfs      | user data       |
-| nvme0n1p6 | AtlasOs | 100Gb | /atlas      | @atlas     | btrfs      | future WinApps  |
+| Drive     | Label   | Size  | Mount-point         | Subvol     | Filesystem | Purpose         |
+| --------- | ------- | ----- | ------------------- | ---------- | ---------- | --------------- |
+| nvme0n1p1 |         | 2Gb   | /boot               |            | vfat       | boot partition  |
+| nvme0n1p2 |         | 5Gb   | /.recover           | @recovery  | btrfs      | recovery system |
+| nvme0n1p3 |         | 10Gb  | swap                |            | swap       | swap partition  |
+| nvme0n1p4 | Root    | 70Gb  | /                   | @          | btrfs      | root volume     |
+| nvme0n1p4 | Root    |       | /var/log            | @log       | btrfs      | log sub volume  |
+| nvme0n1p4 | Root    |       | /var/lib/pacman/pkg | @pkg       | btrfs      | pkg vol         |
+| nvme0n1p4 | Root    |       | /.snapshots         | @snapshots | btrfs      | root volume     |
+| nvme0n1p5 | Home    | 100Gb | /home               | @home      | btrfs      | user data       |
+| nvme0n1p6 | AtlasOs | 100Gb | /atlas              | @atlas     | btrfs      | future WinApps  |
 
 > **Commands:**
 >
@@ -223,20 +246,20 @@ Installed through **Proto**:
 
 | Package | Built-in | Plugin | Description                              |
 | ------- | :------: | :----: | ---------------------------------------- |
-| bun     |     ✅    |        | JavaScript runtime, like Node but faster |
-| deno    |     ✅    |        | Secure runtime for JS and TS             |
-| node    |     ✅    |        | Node.js runtime                          |
-| npm     |     ✅    |        | Node package manager                     |
-| pnpm    |     ✅    |        | Fast Node package manager                |
-| python  |     ✅    |        | Python interpreter                       |
-| uv      |     ✅    |        | Low-level libuv utilities                |
-| rust    |     ✅    |        | Rust programming language                |
-| zig     |          |    ✅   | Zig language compiler                    |
-| act     |          |    ✅   | GitHub Actions runner                    |
-| moon    |     ✅    |        | Build system / task runner               |
-| jq      |           |   ✅   | Command-line JSON processor              |
-| go      |     ✅    |        | Go programming language                  |
-| yarn    |     ✅    |        | Node package manager alternative         |
+| bun     |    ✅    |        | JavaScript runtime, like Node but faster |
+| deno    |    ✅    |        | Secure runtime for JS and TS             |
+| node    |    ✅    |        | Node.js runtime                          |
+| npm     |    ✅    |        | Node package manager                     |
+| pnpm    |    ✅    |        | Fast Node package manager                |
+| python  |    ✅    |        | Python interpreter                       |
+| uv      |    ✅    |        | Low-level libuv utilities                |
+| rust    |    ✅    |        | Rust programming language                |
+| zig     |          |   ✅   | Zig language compiler                    |
+| act     |          |   ✅   | GitHub Actions runner                    |
+| moon    |    ✅    |        | Build system / task runner               |
+| jq      |          |   ✅   | Command-line JSON processor              |
+| go      |    ✅    |        | Go programming language                  |
+| yarn    |    ✅    |        | Node package manager alternative         |
 
 > **Commands:**
 >
@@ -260,7 +283,7 @@ Installed through **Proto**:
 > - `btop` → resource monitor with CPU, memory, disk, network visualizations
 > - `htop` → interactive process viewer for the terminal
 
-## 0.1.0 | Stable - Fonts Support
+## 0.1.0 | Stable -> Feat[@shell]: Fonts Support
 
 Most/All Fonts Availables on Arch
 
@@ -300,7 +323,7 @@ Most/All Fonts Availables on Arch
 >         xorg-fonts-type1
 > ```
 
-## 0.2.0 | Stable - Yay Setup
+## 0.2.0 | Stable -> Feat[@shell]: Yay Setup
 
 Yay Aur Pkg Manager Set up
 
@@ -323,7 +346,9 @@ Yay Aur Pkg Manager Set up
 > yay -Y --devel --save
 > ```
 
-## 0.3.0 | Stable - Snapper Setup
+## 0.3.0 | Unstable - Feat[@shell] Snapper Setup
+
+### **Setup – Basic Snapshots Support**
 
 > **Commands:**
 >
@@ -361,7 +386,13 @@ Yay Aur Pkg Manager Set up
 > sudo mount -o subvol=@snapshots /dev/nvme0n1p4 /.snapshots --mkdir
 > ```
 
-## 0.3.1 | Stable - Fixed Locale error with `"C"` (missing UTF-8)
+### **Unstability Reason**
+
+Non configured, auto-snapshot limit. From seconde install, This was a real problem,
+As snapper keep reference, suppressed files & uncompressed version of files after,
+`btrfs filesystem defragment` and `btrfs filesystem balance`
+
+## 0.3.1 | Stable - Fix[@shell]: Locale error with `"C"` (missing UTF-8)
 
 Fixed minor error with system fonts
 
@@ -374,7 +405,7 @@ Fixed minor error with system fonts
 > set -U LC_ALL en_US.UTF-8
 > ```
 
-## 0.4.0 | Stable - Quickshell Barbone support
+## 0.4.0 | Stable -> Feat[@shell] Quickshell Barbone support
 
 > **Commands:**
 >
@@ -387,7 +418,7 @@ Fixed minor error with system fonts
 
 ---
 
-## 0.5.0 | Stable - Installed Android Studio
+## 0.5.0 | Stable -> Feat[@apps]: Installed Android Studio
 
 Basic Android studio setup
 
@@ -398,14 +429,14 @@ Basic Android studio setup
 >
 > cd android-studio &&
 > chmod +x ./bin/studio.sh
-> 
+>
 > set -Ux ANDROID_HOME /home/cat/Android/Sdk/ #check the path match
 > ./bin/studio.sh
 > ```
 
 ---
 
-## 0.5.1 | Stable - Fix Missued Universal vars
+## 0.5.1 | Stable -> Fix[@shell]: Fix Missused Universal vars
 
 > **Commands:**
 >
@@ -414,4 +445,206 @@ Basic Android studio setup
 > set -Ux EDITOR nvim
 > set -Ux LANG en_US.UTF-8
 > set -Ux LC_ALL en_US.UTF-8
+> ```
+
+---
+
+## 1.0.0 | Stable -> Fix[@graphics]: Intel Graphics
+
+Intel GPU Driver & Wayland Environment Setup
+
+> **Description:**
+>
+> Configures Intel GPU acceleration (Mesa, Vulkan, VA-API), Wayland display system, and desktop utilities for Hyprland environment.
+>
+> **Observation:**
+>
+> My PC fly like a rocket, Android Studio, VM, Heavy Game, It doesn't flinch anymore, I have to stick my head to the fan ouput to be able to hear it, even at night
+
+---
+
+### **Setup — Drivers & Utils**
+
+> **Commands:**
+>
+> ```fish
+> sudo pacman -S --needed \
+>     mesa \
+>     vulkan-intel \
+>     libva-intel-driver \
+>     intel-media-driver \
+>     vulkan-tools \
+>     libvdpau-va-gl \
+>     intel-gpu-tools \
+>     mesa-utils \
+>     libva-utils \
+>     linux-firmware # Required for newer Intel GPUs (e.g. Skylake)
+> ```
+>
+> **Note:**
+>
+> | Package                | Description                                                                           |
+> | ---------------------- | ------------------------------------------------------------------------------------- |
+> | **mesa**               | Core OpenGL and Vulkan implementation for hardware-accelerated rendering.             |
+> | **vulkan-intel**       | Intel’s Vulkan driver for modern GPU rendering and 3D applications.                   |
+> | **libva-intel-driver** | Legacy VA-API driver for hardware-accelerated video decoding (older Intel GPUs).      |
+> | **intel-media-driver** | Modern VA-API driver supporting Broadwell and newer Intel GPUs.                       |
+> | **vulkan-tools**       | Tools such as `vulkaninfo` for inspecting Vulkan device support and features.         |
+> | **libvdpau-va-gl**     | Compatibility layer translating VDPAU calls into VA-API (for apps expecting VDPAU).   |
+> | **intel-gpu-tools**    | Debugging and monitoring utilities for Intel GPUs (`intel_gpu_top`, etc.).            |
+> | **mesa-utils**         | Basic OpenGL tools like `glxinfo` and `glxgears` for testing 3D acceleration.         |
+> | **libva-utils**        | Utilities to test and debug VA-API support (`vainfo`, `vdpauinfo`).                   |
+> | **linux-firmware**     | Essential binary firmware files used by modern Intel GPUs and other hardware devices. |
+
+---
+
+### **Setup — Wayland**
+
+> **Commands:**
+>
+> ```fish
+> sudo pacman -S --needed \
+>     wayland \
+>     wayland-protocols \
+>     xorg-xwayland
+> ```
+
+> **Note:**
+>
+> | Package               | Description                                                                                                                                                      |
+> | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | **wayland**           | Core Wayland display protocol libraries and utilities used by compositors and clients.                                                                           |
+> | **wayland-protocols** | Official collection of additional Wayland protocol extensions (e.g., screen capture, idle inhibit, layer-shell).                                                 |
+> | **xorg-xwayland**     | Compatibility layer providing an embedded X11 server inside Wayland, allowing legacy X applications to run seamlessly under Wayland compositors (like Hyprland). |
+
+---
+
+### **Setup — Desktop Shell**
+
+> **Commands:**
+>
+> ```fish
+> sudo pacman -S --needed \
+>     gtk3 gtk4 \
+>     qt5-wayland qt6-wayland
+> ```
+
+> **Note:**
+>
+> | Package         | Description                                                                             |
+> | --------------- | --------------------------------------------------------------------------------------- |
+> | **gtk3**        | GTK 3 toolkit for building graphical applications (used by many Linux apps).            |
+> | **gtk4**        | GTK 4 toolkit, latest version with Wayland support and improved rendering.              |
+> | **qt5-wayland** | Qt 5 platform plugin for Wayland, enabling Qt5 applications to run natively on Wayland. |
+> | **qt6-wayland** | Qt 6 platform plugin for Wayland, enabling Qt6 applications to run natively on Wayland. |
+
+---
+
+### **Setup — Desktop Utils**
+
+> **Commands:**
+>
+> ```fish
+> sudo pacman -S --needed \
+>     xdg-desktop-portal-hyprland \
+>     xdg-desktop-portal \
+>     xdg-utils \
+>     wl-clipboard \
+>     grim slurp \
+>     waybar \
+>     swaync
+>
+> yay -S ironbar
+> ```
+
+> **Note:**
+>
+> | Package                         | Description                                                                                                          |
+> | ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+> | **xdg-desktop-portal-hyprland** | Implementation of XDG portal interfaces for Hyprland, enabling screenshots, file pickers, and other portal features. |
+> | **xdg-desktop-portal**          | Generic XDG desktop portal service for sandboxed applications (Flatpak, Snap) to interact with the desktop.          |
+> | **xdg-utils**                   | Command-line utilities for desktop integration (open URLs, mime-types, default apps).                                |
+> | **wl-clipboard**                | Clipboard utilities for Wayland (copy/paste between apps).                                                           |
+> | **grim**                        | Wayland screenshot utility.                                                                                          |
+> | **slurp**                       | Tool to select a screen region under Wayland (often used with `grim`).                                               |
+> | **waybar**                      | Highly configurable status bar for Wayland compositors like Hyprland.                                                |
+> | **swaync**                      | Notification daemon for Wayland (similar to `dunst` on X11).                                                         |
+> | **ironbar (AUR)**               | Custom Hyprland bar available via AUR (`yay`) for additional status/info display.                                    |
+
+---
+
+### **Implementation Reference**
+
+Graphics on Linux operate across several layers: **kernel**, **drivers**, **libraries**, and **display/compositor**.
+
+- **Kernel level:** `i915` (Intel GPU kernel module; alternatives include `xe`, etc.)  
+  Handles direct communication with the GPU, mode setting (KMS), and low-level hardware management.
+
+- **Driver / microcode layer:** e.g., `intel-ucode`  
+  Provides CPU/microcode updates necessary for stable GPU operation, enabling the kernel module to talk to the hardware safely.
+
+- **Libraries / APIs:** e.g., OpenGL (Mesa), Vulkan (`vulkan-intel`)  
+  Provide user-space interfaces for complex GPU operations, including 3D rendering and general GPU computation.
+
+- **Display server / compositor:** e.g., `xorg-server`, `xorg-xwayland`  
+  Provides windowing, input/output, and graphical context, connecting applications to the underlying GPU APIs.
+
+> **Hardware acceleration:** Offloading work from the CPU to specialized hardware.  
+> This includes:
+>
+> - GPU rendering (aka GPU acceleration)
+> - Video decode/encode engines (Intel QuickSync, AMD VCE/VCN, NVIDIA NVDEC/NVENC)
+> - Audio DSPs (less common)
+> - Cryptographic accelerators (AES-NI, etc.)
+
+**Example in your context:**
+
+- `mesa + vulkan-intel` → GPU acceleration (3D/OpenGL/Vulkan rendering)
+- `libva-intel-driver` / `intel-media-driver` → Hardware acceleration for video decoding (may use GPU video engine without touching shaders)
+
+> In practice, “Intel GPU hardware acceleration” usually refers to **both graphics (3D) and video decoding offloaded to the GPU**.
+
+### **Checkup — Validation**
+
+> **Commands:**
+>
+> ```fish
+> # Monitor Intel GPU activity
+> sudo intel_gpu_top
+> # (Video engine usage > 0% when playing video)
+>
+> # Confirm GPU driver
+> lspci -k | grep -A3 -E "VGA|3D"
+>
+> # Check VA-API / video acceleration
+> vainfo
+>
+> # Renderer info (OpenGL)
+> glxinfo | grep "OpenGL renderer"
+>
+> # Renderer info (Vulkan)
+> vulkaninfo | grep "deviceName"
+>
+> # Confirm Wayland session
+> echo $XDG_SESSION_TYPE
+> ```
+
+---
+
+## 1.1.0 | Stable -> Feat[@apps]: Semi Windows Apps Support (Wine)
+
+> **Commands:**
+>
+> ```fish
+> sudo pacman -Syu wine wine-gecko wine-mono winetricks zenity
+> ```
+
+Note: edited `/etc/pacman.conf` uncommented out `multilib` entry
+
+# 1.2.0 | Stable -> Feat[@apps]: Xamp PHP Dev Server
+
+> **Commands:**
+>
+> ```fish
+> pacman -S xampp
 > ```
