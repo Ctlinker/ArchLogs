@@ -508,7 +508,7 @@ Intel GPU Driver & Wayland Environment Setup
 >     wayland-protocols \
 >     xorg-xwayland
 > ```
-
+>
 > **Note:**
 >
 > | Package               | Description                                                                                                                                                      |
@@ -528,7 +528,7 @@ Intel GPU Driver & Wayland Environment Setup
 >     gtk3 gtk4 \
 >     qt5-wayland qt6-wayland
 > ```
-
+>
 > **Note:**
 >
 > | Package         | Description                                                                             |
@@ -556,7 +556,7 @@ Intel GPU Driver & Wayland Environment Setup
 >
 > yay -S ironbar
 > ```
-
+>
 > **Note:**
 >
 > | Package                         | Description                                                                                                          |
@@ -641,10 +641,43 @@ Graphics on Linux operate across several layers: **kernel**, **drivers**, **libr
 
 Note: edited `/etc/pacman.conf` uncommented out `multilib` entry
 
-# 1.2.0 | Stable -> Feat[@apps]: Xamp PHP Dev Server
+## 1.2.0 | Stable -> Feat[@apps]: Xamp PHP Dev Server
 
 > **Commands:**
 >
 > ```fish
 > pacman -S xampp
 > ```
+
+## 1.3.0 | Stable -> Feat[@shell]: Speech Synthesis
+
+> **Desciption:**
+>
+> Fully configured `llm` based speech to text synthesis through `piper`
+
+### Setup - Speech Dispatcher
+
+> **Commands:**
+>
+> ```fish
+> sudo pacman -S speech-dispatcher
+> spd-conf
+> ```
+
+### Setup - Piper & Piper Voices
+
+> **Commands:**
+>
+> Get `piper` run:
+>
+> ```fish
+> yay -S piper-tts-bin piper-voices-en-us
+> ```
+>
+> To Configure `piper` and `speech-dispatcher`
+>
+> Add the line `
+> AddModule "piper-tts-generic" "sd_generic" "piper-tts-generic.conf"
+> ` to `~/.config/speech-dispatcher/speechd.conf`
+>
+> And set `DefaultModule    "piper-tts-generic"`
